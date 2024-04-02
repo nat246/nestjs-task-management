@@ -22,4 +22,10 @@ export class TasksController {
     return this.tasksService.createTask(createTaskDto);
   }
 
+  @Delete('/:id')
+  deleteTaskById(@Param('id') id: string): void {
+    this.tasksService.deleteTaskById(id);
+
+    console.log('Deleted task: ', id);
+  }
 }
