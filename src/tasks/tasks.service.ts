@@ -66,7 +66,10 @@ export class TasksService {
   }
 
   deleteTaskById(id: string): void {
-    const taskIndex: number = this.tasks.findIndex((task) => task.id === id);
+    const found = this.getTaskById(id);
+    const taskIndex: number = this.tasks.findIndex(
+      (task) => task.id === found.id,
+    );
     this.tasks.splice(taskIndex, 1);
   }
 
