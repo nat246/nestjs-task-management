@@ -9,10 +9,9 @@ import { TaskRepository } from './tasks.repository';
 export class TasksService {
   constructor(private readonly tasksRepository: TaskRepository) {}
 
-  async getAllTasks(): Promise<Task[]> {
-    return await this.tasksRepository.find();
+  async getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {
+    return this.tasksRepository.getTasks(filterDto);
   }
-
 
   async getTaskById(id: string): Promise<Task> {
     const found = await this.tasksRepository.findOneBy({ id });
